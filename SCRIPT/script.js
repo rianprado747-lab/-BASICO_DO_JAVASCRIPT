@@ -3,7 +3,7 @@ console.log("Olá, Mundo!");
 let nome = "Rian";
 console.log("Olá",nome,"tudo bem?");
 
-let idade = 23;
+let idade = 18;
 console.log("O",nome,"tem",idade,"anos.");
 
 let maiordeidade = idade >= 18;
