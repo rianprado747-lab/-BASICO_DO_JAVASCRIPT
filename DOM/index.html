@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifier</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+    .zebraon{
+        background:silver;
+    }
+</style>
+<body>
+    <h1>Introdução a DOM</h1>
+    <p><strong>O document Object Model ou simplesmente DOM é utilizado pelo navegador WEb para representar a sua página Web.</strong><br>
+        Quando altera-se esse modelo o uso do <strong>JavaScript</strong>altera-se também a página web.É muito mais fácil trabalhar<br>
+        com DOM do que diretamente com código <strong>HTMLL</strong> ou <strong>CSS.</strong>
+    </p>
+    <p>Você conhece sobre a arvore DOM? Se não<br>
+        conhece aprenda em<br>
+        <a href="www.devmedia.com.br">www.devmedia.com.br</a><br>
+        e seja mais o novo entendido sobre o assunto.</p>
+    <span onclick="testandoArvoreDOM();">Clique aqui para testar o acesso a Arvore DOM</span>
+
+    <input type="button" id="notify" value="Notify in 5 seconds"
+    onclick="notify('Will notify in 5 seconds...');setTimeout('notify(\'Even shoot!\')',5000)"/>
+    <div id="msg"></div>
+
+    <table class="zebra">
+        <thead>
+            <tr>
+                <th>Vendedor</th> <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Manoel</td> <td>12.300,00</td>
+            </tr>
+            <tr>
+                <td>Joaquim</td> <td>21.300,00</td>
+            </tr>
+            <tr>
+                <td>Maria</td> <td>13.200,00</td>
+            </tr>
+            <tr>
+                <td>Marta</td> <td>32.100,00</td>
+            </tr>
+            <tr>
+                <td>Antonio</td> <td>23.100,00</td>
+            </tr>
+            <tr>
+                <td>Pedro</td> <td>31.200,00</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<script>
+    function testandoArvoreDOM(){
+        var elemento = document.documentElement.lastChild;
+        alert(`Eu sou o nodo ${elemento.nodeName}`)
+
+        var outroElemento = document.getElementbyTagname('h1')[0];
+        alert(`Eu sou o nodo ${outroElemento.nodeValue}`);
+
+        var filho = outroElemento.firstChild;
+        alert(`Eu sou o nodo ${filho.nodeValue}`)
+    }
+    function notify(text){
+        document.getElementById('msg').innerHTML+='<p>'+text+'</p>'
+        titleFlick()
+    }
+    function titleFlick(){
+        if(document.hasFocus()){
+            document.title='Notifier'
+            return
+        }
+        document.title=document.title=='Notifier'?'* Notifier':'Notifier'
+        setTimeout('titleFlick()',500)
+    }
+
+    window.onload=function(){
+        var zebrar=document.querySelectorAll('.zebra tbody tr')
+        for(var i=0;i<zebrar.length;i+=2)
+        zebrar[i].className='zebraon'
+    }
+
+
+
+</script>
+</body>
+</html>
